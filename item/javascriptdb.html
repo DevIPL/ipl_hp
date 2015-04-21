@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="jp" lang="jp"> 
+<head> 
+	<meta name="author" content="Wink Hosting (www.winkhosting.com)" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" /> 
+	<meta name="keywords" content="JavascriptDB,AJAX,簡易DB,CSVデータベース,サンプル,ソフトハウス,プログラマ,SE" /> 
+	<meta name="description" content="AJAX+JavascriptDBで簡易CSVデータベース利用のWebサンプル | 技術情報" /> 
+	<meta http-equiv="Content-Style-Type" content="text/css" /> 
+	<link rel="stylesheet" href="../images/style.css" type="text/css" /> 
+	<title>AJAX+JavascriptDBで簡易CSVデータベース利用のWebサンプル | 技術情報</title> 
+</head> 
+<body> 
+	<div id="page" align="center"> 
+		<div id="content" style="width:800px"> 
+			<div id="logo"> 
+				<div style="margin-top:70px" class="whitetitle">IPlanning</div> 
+			</div> 
+			<div id="topheader"> 
+				<div align="left" class="infotext"> 
+					<br /> 
+					<h1>株式会社 アイプランニング</h1><br /> 
+					Towa Edogawabashi building 8F<br /> 
+					Yamabuki-cho 347<br /> 
+					Shinjuku-ku Tokyo<br /> 
+					Phone: 03-5225-1147<br /> 
+				</div> 
+				<div id="toplinks" class="smallgraytext"> 
+					<a href="../index.html">HOME</a> | <a href="../privacy/index.html" target="_blank">個人情報保護方針</a> | <a href="../sitemap.html">サイトマップ</a> | <a href="../contact/index.html">問い合わせ</a> 
+				</div> 
+			</div> 
+			<div id="menu"> 
+				<div align="right" class="smallwhitetext" style="padding:9px;"> 
+					<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a> 
+				</div> 
+			</div> 
+			<div id="submenu"> 
+				<div align="right" class="smallgraytext" style="padding:9px;"> 
+					<a href="../about/index.html">代表からの挨拶</a> | <a href="../recruit/new.html">新卒募集</a> | <a href="../recruit/tyuto.html">中途募集</a> | <a href="../voice/index.html">社員の声</a> | <a href="../circle/index.html">サークル活動</a> | <a href="../link/index.html">リンク</a> 
+				</div> 
+			</div> 
+			<div id="contenttext"  align="justify"> 
+<div style="padding:70px 10px 15px 0px"> 
+	<span class="titletext"><strong>AJAX+JavascriptDBで簡易CSVデータベース利用のWebサンプル</strong></span> 
+	<p style="padding:8px;font-size:18px;font-weight:bold;text-align:left;line-height:130%;"> 
+		javascriptのみでSQL検索を実現するjavascriptDBの調査
+	</p> 
+</div> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	
+	<p style="margin: 5px 5px 5px 0px;"> 
+		javascriptDBのライブラリは<a href="http://jsdb.sourceforge.net/">ここからダウンロード</a>できます。。
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		どのような事ができるのかは、本家の<a href="http://jsdb.sourceforge.net/demo.html">Demo</a>を見れば大体の雰囲気が分かると思います。
+	</p> 
+</div> 
+<h2>AJAX+JavascriptDBで簡易CSV-RDBのサンプル</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	
+	<p style="margin: 5px 5px 5px 0px;"> 
+今回は、CSVをRDB風に準備、作成し、AJAXを利用してリアルタイム応答を実現するように作ってみました。<br /> 
+<br /> 
+		<a href="personviewer/personviewer.html" target="_blank"><img height="343" alt="AJAX+JavascriptDBで簡易DBサンプル" src="javascriptdb.jpg" width="458"></a><br /> 
+		※フォームから検索条件を指定したり、SQL文自体をも打ち込むことができます。<br /> 
+		⇒<a href="personviewer/personviewer.html" target="_blank">AJAX+JavascriptDB Webサンプル</a><br /> 
+<br /> 
+●CSVデータベースのモデル図<br /> 
+<img alt="CSVデータベースのモデル図" src="javascriptdbDBmodel.jpg"> 
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		サンプルで使用しているソースコード一式は<a href="personviewer/personviewer.lzh">こちら(personviewer.lzh)</a><br /> 
+	</p> 
+	
+	
+	
+</div> 
+<h2>向いている用途</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・CGIサーバを用意できない環境で、ユーザにテーブルの検索を行わせたい。<br /> 
+		・CSVの表示を簡易に行いたい<br /> 
+		・複数のCSVをRDB風に行いたい。
+	</p> 
+</div> 
+<h2>使用方法</h2> 
+ 
+<h3>必要なもの</h3> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・db_core.js<br /> 
+		・データ定義用ユーザjavascript<br /> 
+		・HTML本体
+	</p> 
+</div> 
+<h3>使用手順</h3> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・HTMLにdb_core.jsをインクルード<br /> 
+		　　&lt;script type='text/javascript' src='db_core.js'&gt;<br />	・DBを作成<br /> 
+		　　var DBTest = new Database ("DBTest");<br /> 
+		・テーブル生成<br /> 
+		　　DBTest.CreateTable("Usuario",Array("id","login","passwd","telefon"));<br /> 
+		・レコードをインサート<br /> 
+		　　DBTest.Insert("Usuario",Array(1,"rosibel","clau","934856890"));<br /> 
+		・必要に応じてselect文を記述<br /> 
+		　　mArr = DBTest.Select('select passwd from Usuario where login="rosibel"');<br /> 
+		　　（view関数でhtml中に配列をTable表示することができます。）
+	</p> 
+</div> 
+<h2>SQLクエリ中で使えるもの</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・SELECT<br /> 
+		・日本語をキーに検索<br /> 
+		・INSERT（専用の関数あり）<br /> 
+		・WHERE<br /> 
+		・LEFT JOIN<br /> 
+		・INNER JOIN<br /> 
+		・ORDER BY<br /> 
+		・LIKE指定<br /> 
+		・*による全指定
+	</p> 
+</div> 
+<h2>SQLクエリ中で使えないもの</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・DELETE<br /> 
+		・UPDATE<br /> 
+		・BETWEEN句<br /> 
+		・LEFT<br /> 
+		・副問い合わせ
+	</p> 
+</div> 
+<h2>SQLクエリを記述する際の留意点</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		・クエリは改行を含まないように。<br />
+		・テーブル名、カラム名の大文字小文字は区別される。<br />
+		・単一テーブルの検索時にテーブル名を明示すると、正常に動作しない（undefinedが入る）<br />
+		　誤：select Person.name from Person<br />
+		　正：select name from Person<br />
+		・複数のテーブルを使う場合、カラムにはテーブル名を明示する必要がある。<br />
+		　例：select Person.name, City.id from Person, City<br />
+		・条件判断はjavascriptのevalで行われている。<br />
+		　　→javascriptの演算子は使用可能
+	</p> 
+</div> 
+<h2>IEにおける処理時間</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	
+	<p style="margin: 5px 5px 5px 0px;"> 
+		処理時間の増加はほぼ線形。<br /> 
+		IEだと、スクリプトの処理に20秒以上かかると、<br /> 
+		スクリプト中止の確認ダイアログが出る。<br /> 
+		そのため、20秒以内に実行が終わるようなクエリ・レコード数が望ましい。
+	</p> 
+</div> 
+<h3>例</h3> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		＜実行環境＞<br /> 
+		OS：Windows XP Service Pack 2<br /> 
+		CPU：Pentium 4 2.8GHz<br /> 
+		RAM：1.0GB<br /> 
+		IE：6.0.2900.2180 SP2
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		ソートを使う場合<br /> 
+		select * from Names order by addressid<br /> 
+		→30000レコード程度で処理時間が20秒になる。
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		JOINでテーブルを一つ結合<br /> 
+		select Names.id,Names.name,Names.address,City.name from Names left join City on Names.addressid=City.addressid<br /> 
+		→9000レコード前後で処理時間が20秒になる。
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		<img src="jsdb_graph.png" /> 
+	</p> 
+</div> 
+<h2>ブラウザ別処理時間（参考）</h2> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		IE6とFirefox2では、<br /> 
+		Firefox2のほうが２倍程度遅いようです。
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		＜1000件＞<br /> 
+		select * from Names
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:0.5秒<br /> 
+			FX:0.8秒
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		select * from Names order by addressid
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:0.7秒<br /> 
+			FX:1.9秒
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		select Names.id,Names.name,Names.address,City.name from Names left join City on Names.addressid=City.addressid
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:1.8秒<br /> 
+			FX:3.3秒
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		＜5000件＞
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		select * from Names
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:2.6秒<br /> 
+			FX:4.2秒
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		select * from Names order by addressid
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:3.5秒<br /> 
+			FX:11.1秒
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+		select Names.id,Names.name,Names.address,City.name from Names left join City on Names.addressid=City.addressid
+	</p> 
+	<p style="margin: 5px 5px 5px 0px;"> 
+			IE:9.3秒<br /> 
+			FX:約18秒（途中で警告ダイアログが表示された）
+	</p> 
+	
+	
+</div> 
+		</div> 
+			<div id="leftpanel"> 
+ 
+				<div align="justify" class="graypanel"> 
+					<h3>アイプランニング技術情報</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					このページでは、アイプランニング社員が調査したこと、学んでいることが具体的にどんなものなのかを披露してきます。
+					プログラム初心者の方向けの情報から、超マニアックな分野の情報まで随時提供していきますのでお楽しみ下さい。<br /> 
+					<br /> 
+					<a href="index.html">技術情報TOPページ</a> 
+					</div> 
+				</div> 
+ 
+				<div align="justify" class="graypanel"> 
+					<h3>参考サイト</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+ 
+		<p><a href="http://211.5.227.51/~y-matsui/MovableType/archives/cat1/cat30/index.html">y-matsui::Weblog</a><br /></p><p>&nbsp;</p> 
+		<p><a href="http://jsdb.sourceforge.net/">JavascriptDB - sourceforge</a><br /></p><p>&nbsp;</p> 
+					</div> 
+				</div> 
+ 
+				<div align="justify" class="graypanel"> 
+					<h3>プログラマ募集中・・・</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					<b>■</b><span class="underline">第一は「人物重視」</span><br /> 
+					お客さまの立場に立ってモノが作れる判断力、企画力、コンサルティング能力を磨きたくはありませんか？プログラム能力は、プロジェクトを通じて自然と能力があがるようなシステムになっています。初心者プログラマであっても３年程度で、その能力は初心者だったとは思えないくらいのスキルとなっています。<br /> 
+					これは、「最初は誰でも初心者だ」という教育方針があるため、また、多くの社員が入社して初めてプログラミングにふれたという経験があるために自分のつまづき体験や、成功体験を含めた教育がなされているからなのです。<br /> 
+					このようにアイプランニングでは、社員１人ひとりの個性と人間性を重視し、スキルにあったマンツーマン教育であなたを一人前のエンジニアへと成長させていきます。
+					それは誠実なスタッフが集まっているからこそ、どんなお客様からも信頼される企業に成長できるから。私たちはそう考えています。
+					</div> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					<b>■</b><span class="underline">応募者へのメッセージ</span><br /> 
+					プログラマを目指して会社に入ったものの、思った通りの仕事をさせてもらえなかったと思っている人、教育システムが十分でなかったためにスキルが身に付いていないと思っている人も気軽にご応募ください。パソコンのスキルに自信のない方でも、マンツーマンの研修制度で一人前に成長できるフィールドを整えておりますので安心してご応募くださいね。<br /> 
+					知識だけでなく本当の開発力が身につく環境でのシステム開発でみつかる『やりがい』はもちろん、プライベートでも今までになかった充実感が得られますよ。<br /> 
+					<ul> 
+					<li><a href="../recruit/new.html">⇒新卒応募ページはこちら</a></li> 
+					<li><a href="../recruit/tyuto.html">⇒中途応募ページはこちら</a></li> 
+					<ul> 
+					</div> 
+ 
+				</div> 
+ 
+ 
+ 
+			</div> 
+			<div id="footer" class="smallgraytext"> 
+				<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a> 
+				| 株式会社 アイプランニング 
+				&copy; 1987 
+			</div> 
+		</div> 
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write("\<script src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'>\<\/script>" );
+</script> 
+<script type="text/javascript"> 
+var pageTracker = _gat._getTracker("UA-3244420-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script> 
+	</div> 
+</body> 
+ 
+</html> 

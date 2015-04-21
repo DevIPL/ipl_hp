@@ -1,0 +1,126 @@
+/*
+	納品書メーカー
+	author: iwai
+	version: 1.03 (2011.12.05)
+*/
+
+/* 基本フォント設定 */
+body{
+	font-family: "ＭＳ Ｐ明朝";
+	font-size: 8pt;
+}
+
+/* グリッドレイアウト設定 */
+.grid_1 { width:1cm; }
+.grid_2 { width:2cm; }
+.grid_3 { width:3cm; }
+.grid_4 { width:4cm; }
+.grid_5 { width:5cm; }
+.grid_6 { width:6cm; }
+.grid_7 { width:7cm; }
+.grid_8 { width:8cm; }
+.grid_9 { width:9cm; }
+.grid_10 { width:10cm; }
+.grid_11 { width:11cm; }
+.grid_12 { width:12cm; }
+
+.column {
+	margin: 0 0px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+}
+.row {
+	width: 12cm;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.row .row {
+	width: auto;
+	display: inline-block;
+}
+
+.mm_1{
+	margin: 1mm;
+	line-height: 1.7em;
+	padding-left:1.2em;
+	padding-right:1.2em;
+}
+.mm_1_narrow{
+	margin: 1mm;
+	line-height: 1.2em;
+	padding-left:1.2em;
+	padding-right:1.2em;
+}
+.mm_1_narrow_2{
+	margin: 1mm;
+	line-height: 1.4em;
+	padding-left:1.2em;
+	padding-right:1.2em;
+
+}
+.mm_2{
+	margin: 4mm;
+}
+
+.under{
+	text-decoration: underline;
+}
+
+td{
+	border: solid 1px #000000;
+	padding: 1mm;
+}
+
+.nouhin_desc{
+	width: 98%;
+}
+
+.right{
+	text-align: right;
+}
+.center{
+	text-align: center;
+}
+
+
+/* 書式設定 */
+#nouhin_title {
+	font-size: 12pt;
+}
+
+#nouhin_list:hover {
+	background-color: #FFC;
+}
+
+#nouhin_list {
+	background-color: #FFF;
+}
+
+#container{
+	width: 12cm;
+	height: 12cm;
+	border: 1px solid #AAAAAA;
+}
+
+
+
+
+
+
+
+
+/* レイアウト用デバッグクラス */
+
+.debug_1{
+/*
+	background: #eeeeff;
+*/
+}
+
+.debug_2{
+/*
+	background: #ffeeff;
+*/
+}
+

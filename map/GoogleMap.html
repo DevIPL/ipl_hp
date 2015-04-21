@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Generator" content="GMapCreator,http://www.geekpage.jp/">
+    <title>Google Map</title>
+    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAmoLlMRRpHh0hv6U1VAOX3xT2cEx0gVqwBJ35F3ZNUOp6vz9j3RR78XyIU1A7nxm4Z59_RLV6zHaP9g"
+        type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+    var map;
+    var markers = new Array(1);
+    function onLoad() {
+      map = new GMap2(document.getElementById("map"));
+      map.setCenter(new GLatLng(35.70859022974285,139.73123967647552),15);
+      map.addControl(new GLargeMapControl());
+      map.addControl(new GMapTypeControl());
+      map.addControl(new GOverviewMapControl());
+      map.setMapType(G_HYBRID_MAP);
+      var marker = null;
+      var n_markers = 0;
+      var markeropts = new Object();
+      markeropts.title = "株式会社アイプランニング";
+      marker = new GMarker(new GPoint(139.73120212554932,35.70859458562887), markeropts);
+      markers[n_markers] = marker;
+      GEvent.addListener(markers[0], "mouseover", function () {markers[0].openInfoWindowHtml("株式会社アイプラニング<br>東京都新宿区山吹町３４７<br>藤和江戸川橋ビル８F<br>℡ 03-5225-1147");});
+      n_markers++;
+      map.addOverlay(marker);
+    }
+    //]]>
+    </script>
+  </head>
+  <body onload="onLoad()" style="margin:0px; padding:0px;">
+    <div id="map" style="width:500px; height:500px; margin:0px; padding:0px;"></div>
+    <div style="font-size:10px;text-align:right;"><a href="http://www.geekpage.jp/">Geek&#12394;&#12410;&#12540;&#12376;</a> : <a href="http://www.geekpage.jp/web/google-maps-api/gmapcreator/">GMapCreator</a></div>
+  </body>
+</html>

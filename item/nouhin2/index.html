@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+    <meta charset="UTF-8">
+    <title>納品CDケースラベルメーカー by IPL</title>
+	<script type='text/javascript' src='./jquery-1.7.1.min.js'></script>
+    <script type="text/javascript" src="./jquery.editinplace.js"></script>
+	<script type="text/javascript" src="./nouhin.js"></script>
+	<link rel="stylesheet" href="./nouhin.css" type="text/css" media="all">
+</head>
+
+
+
+<body>
+<!-- 印刷用表示 -->
+<div class="row" id="container">
+	<div class="grid_12 debug_1"><p class="mm_1 under right"><span id="project_no">N_416_01</span></p></div>
+	<div class="grid_12 debug_2"><p class="mm_1 under right"><span id="project_date">平成25年02月22日</span></p></div>
+	<div class="grid_12 center" style="font-weight: bold;"><p class="mm_2"><span id="nouhin_title">納　品　物　説　明　書</span></p></div>
+	<div class="grid_12 column debug_1"><p class="mm_1 under"><span style="font-size: 12pt;" id="customer">株式会社　ニコン殿</span><br><span id="kenmei_label">件名</span>　：　<span id="project_type">図訂履歴拡張開発</span><br><span id="nouki_label">納期</span>　：　<span id="project_end">平成25年02月28日</span></p>
+	</div>
+	<div class="grid_12 debug_2"><p class="mm_1"><span id="hitokoto">下記の通り納品させていただきます。</span></p></div>
+	<div class="grid_12 debug_1">
+		<table id="nouhin_list" style="border: solid 2px #000000; border-collapse: collapse; width:96%; margin:2%;">
+		    <tr>
+		        <td>No</td>
+		        <td>納品物件</td>
+		        <td>内容</td>
+		    </tr>
+		    <tr>
+		        <td>1</td>
+		        <td>doc.zip</td>
+		        <td>Java7対応資料( .html .swf .pdf)</td>
+		    </tr>
+
+		    <tr>
+		        <td>2</td>
+		        <td>src.zip</td>
+		        <td>ソースコード( .java )</td>
+		    </tr>
+		</table>
+	</div>
+	<div class="grid_12 row">
+		<div class="grid_7 column debug_2">
+<p class="mm_1_narrow" style="margin-top: 1mm;"><span style="font-size: 10.5pt;" id="mycustomer">株式会社アイプランニング</span><br>
+　<span style="font-size: 8pt" id="address1">東京都新宿区山吹町347</span><br>
+　<span style="font-size: 8pt" id="address2">藤和江戸川橋ビル８階</span><br>
+　<span id="web">http://www.ipl.co.jp/</span>
+</p>
+		</div>
+		<div class="grid_5 column debug_1">
+			<p class="mm_1_narrow_2" style="margin-top: 2mm;"><span id="project_manager">担当：EAグループ</span><br>
+			<span id="telephone">TEL：03(5225)1147</span><br>
+			<span id="fax">FAX：03(5225)1157</span><br>
+</p>
+		</div>
+	</div>
+</div>
+
+<!-- 納品表編集 -->
+<div class="debug_1" id="edit_form" style="width: 700px; margin: 40px auto 0 auto;">
+表編集（最大７行まで）<br>
+	<table id="nouhin_edit">
+	    <tr>
+	        <td>No.</td>
+	        <td><span id="nouhinbukken_label">納品物件</span></td>
+	        <td width="500"><span id="naiyou_label">内容</span></td>
+	    </tr>
+	    <tr>
+	        <td>1</td>
+	        <td><input class="nouhin_file" value="doc.zip" /></td>
+	        <td><input class="nouhin_desc" value="Java7対応資料( .html .swf .pdf)" /></td>
+	    </tr>
+	    <tr>
+	        <td>2</td>
+	        <td><input class="nouhin_file" value="src.zip"  /></td>
+	        <td><input class="nouhin_desc" value="ソースコード( .java )"  /></td>
+	    </tr>
+	</table>
+	<button type="button" id="nouhin_reflect" value=""><b>表に反映</b></button><button type="button" id="addrow">行追加</button><button type="button" id="delrow">行削除</button>
+</div>
+
+<div class="row">
+	<div class="grid_12 right debug_1" style="margin: 40px 0 0 0"><input type="button" value="このページを印刷" onclick="window.print();" /></div>
+</div>
+
+</body>
+</html>
+

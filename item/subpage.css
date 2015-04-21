@@ -1,0 +1,22 @@
+/* CSS Document */
+
+/*PAGE LAYOUT*/
+*{
+	margin:0;
+	padding:0;
+}
+
+body {
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-family: "ＭＳ Ｐゴシック","平成角ゴシック",sans-serif;
+	font-size: 0.8em;/*文字サイズ*/
+	line-height:140%;/*行間*/
+
+}
+
+p {
+	margin: 5px 5px 5px 0px;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title>AJAX+JavascriptDB CSV-RDBサンプル</title>
+		<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+		<script type="text/javascript" src="lib/db_core.js"></script>
+		<script type="text/javascript" src="personviewer.js"></script>
+		<link rel="stylesheet" href="personviewer.css" type="text/css" />
+	</head>
+	<body onload="load(DB);" bgcolor="#FFFFFF" link="#0000cc" vlink="#000080" alink="#ff0000">
+		<h1>●簡易AjaxCsvJavascriptDB</h1>
+        <form name="sqlform">
+        	<div id="searchBlock">
+				<h2>検索条件</h2>
+				<p class="key">名前　<input id="hito" name="name" />　"%"であいまい検索</p>
+				<p class="key">性別　<select name="seibetu"><option value="" selected>未指定</option><option value="男">男</option><option value="女">女</option></select></p>
+				<p class="key">年齢　<input size="2" value="20" name="downage" />歳から<input size="2" value="75" name="upage" />歳</p>
+	            <input type="button" value="検索" onclick="writeTbl(DB,makesql());$('#usersql').val(makesql());" />
+			</div>
+		</form>
+		<input id="showsql" type="button" onclick="toggle()" value="SQLの表示" /><br />
+		<div id="usersqlarea">
+	    	<textarea rows="3" cols="30" id="usersql">先に検索を実行してください。</textarea><br />
+			<input type="button" onclick="writeTbl(DB, $('#usersql').val());" value="このSQLで再検索" /><br />
+		</div>
+		<h2>検索結果</h2>	
+		<div id="tablediv">このブロックに結果が表示されます</div>
+		<hr />
+		<small>画像素材に<a href="http://www.iconarchive.com/category/system/the-last-order-icons-by-rokey.html">The Last Order Icons by Rokey</a>を使用させていただいております。</small>
+		<hr />
+		<br />
+		<div id="tablediv"><a href="../javascriptdb.html">[解説に戻る]</a></div>
+	</body>
+</html>

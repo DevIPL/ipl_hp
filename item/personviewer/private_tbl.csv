@@ -1,0 +1,12 @@
+id,address,age,kikon,mail,tel,seibetu
+0,東京,25,既婚,aaa@bbb.co.xx,xx-1234-5678,男
+1,福岡,24,既婚,123@abc.com.xx,xx-2234-5678,男
+2,広島,63,未婚,hello@xyz.xxx,xx-3234-5678,女
+3,横浜,54,既婚,abc@def.xx,xx-4234-5678,男
+4,東京,25,未婚,admin@aaa.bbb.xxx,xx-5234-5678,男
+5,仙台,55,未婚,info@a.b.xxx,xx-6234-5678,男
+6,茨城,44,既婚,aiueo@aaa.ne.xx,xx-7234-5678,男
+7,京都,23,既婚,test@test.xx,xxx-1234-5678,男
+8,東京,53,未婚,mail@aaa.bbb.xxx,xxx-0000-0000,男
+9,ニューヨーク,54,既婚,example@example.xxx,xxx-9999-9999,男
+10,ワシントン,64,既婚,for@i.in.line.xx,xxx-9876-5432,男

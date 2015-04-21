@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="Shift_Jis"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="jp" lang="jp">
+<head>
+	<meta name="author" content="Wink Hosting (www.winkhosting.com)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+	<meta name="keywords" content="アイプランニング,プログラミング,イノベーション,ソフト開発,ソフトハウス,プログラマ,SE,能力重視,レストランオーダエントリーシステム" />
+	<meta name="description" content="WEBで自動返信(サンキューメール)をASPで実現するサンプル | 技術情報<" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" href="../images/style.css" type="text/css" />
+	<title>WEBで自動返信(サンキューメール)をASPで実現するサンプル | 技術情報</title>
+</head>
+<body>
+	<div id="page" align="center">
+		<div id="content" style="width:800px">
+			<div id="logo">
+				<div style="margin-top:70px" class="whitetitle">IPlanning</div>
+			</div>
+			<div id="topheader">
+				<div align="left" class="infotext">
+					<br />
+					<h1>株式会社 アイプランニング</h1><br />
+					Towa Edogawabashi building 8F<br />
+					Yamabuki-cho 347<br />
+					Shinjuku-ku Tokyo<br />
+					Phone: 03-5225-1147<br />
+				</div>
+				<div id="toplinks" class="smallgraytext">
+					<a href="../index.html">HOME</a> | <a href="../privacy/index.html" target="_blank">個人情報保護方針</a> | <a href="../sitemap.html">サイトマップ</a> | <a href="../contact/index.html">問い合わせ</a>
+				</div>
+			</div>
+			<div id="menu">
+				<div align="right" class="smallwhitetext" style="padding:9px;">
+					<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a>
+				</div>
+			</div>
+			<div id="submenu">
+				<div align="right" class="smallgraytext" style="padding:9px;">
+					<a href="../about/index.html">代表からの挨拶</a> | <a href="../recruit/new.html">新卒募集</a> | <a href="../recruit/tyuto.html">中途募集</a> | <a href="../voice/index.html">社員の声</a> | <a href="../circle/index.html">サークル活動</a> | <a href="../link/index.html">リンク</a>
+				</div>
+			</div>
+			<div id="contenttext">
+				<div style="padding:70px 10px 15px 0px">
+					<span class="titletext"><strong>WEBで自動返信(サンキューメール)をASPで実現するサンプル</strong></span>
+					<p style="padding:8px;font-size:18px;font-weight:bold;text-align:left;line-height:130%;">
+					新卒採用の応募、セミナーへの応募時に、応募者に対して自動的にサンキューメールを送ることを<br />
+					ASP(Active Server Pages)で実現するサンプルコードを公開します。<br />
+					※WindowsNTサーバ編
+					</p>
+				</div>
+
+				<h2 style="font-size:26px;font-weight:bold;">ASPサンプルコード</h2>
+				<div class="bodytext" style="padding:12px;" align="justify">
+					■<a href="samplecode.zip">全サンプルコードのダウンロード</a><br />
+					<br />
+					ASPのメイン処理となるtest.asp<br />
+					<textarea rows="30" cols="70" style="font-size:12.0px;text-align:left">
+
+&lt;%@ language="javascript" %&gt;
+&lt;%
+function check_mail_address(address) {
+    // http://www.tt.rim.or.jp/~canada/comp/cgi/tech/mailaddrmatch/
+    var regex = new RegExp("^[\x01-\x7F]+@(([-a-z0-9]+\.)*[a-z]+|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$", "i");
+    return regex.test(address);
+}
+
+function get_current_time() {
+    var now = new Date();
+    var y = now.getYear();
+    var m = 1 + now.getMonth();
+    var d = now.getDate();
+    var h = now.getHours();
+    var mm = now.getMinutes();
+    var s = now.getSeconds();
+    var t = y + "-";
+    if (m &lt; 10) {
+        t += "0" + m + "-";
+    } else {
+        t += m + "-";
+    }
+    if (d &lt; 10) {
+        t += "0" + d + "T";
+    } else {
+        t += d + "T";
+    }
+    if (h &lt; 10) {
+        t += "0" + h + ":";
+    } else {
+        t += h + ":";
+    }
+    if (mm &lt; 10) {
+        t += "0" + mm + ":";
+    } else {
+        t += mm + ":";
+    }
+    if (s &lt; 10) {
+        t += "0" + s;
+    } else {
+        t += s;
+    }
+    return t;
+}
+
+function form_parameter() {
+    this.s = "";
+    this.n = "";
+    this.k = "";
+    this.m = "";
+    this.c = "";
+}
+
+function user_infomation() {
+    this.host = "";             // REMOTE_HOST
+    this.ua = "";               // HTTP_USER_AGENT
+    this.time = "";
+}
+
+// ////////////////////////////////////////////////////////////////
+var info = new user_infomation();
+var param = new form_parameter();
+for (var i in param) {
+    param[i] = Request.Form(i).item();
+}
+
+var text = "";
+text += "&lt;dl&gt;\n";
+for (var i in param) {
+    text += "&lt;dt&gt;" + Server.HTMLEncode(i) + "&lt;/dt&gt;&lt;dd&gt;" + Server.HTMLEncode(param[i]) + "&lt;/dd&gt;\n";
+}
+text += "&lt;/dl&gt;\n";
+
+if (param.s == "上記に同意して送信") {
+    if (param.n != "" && param.k != "" && param.m != "" && check_mail_address(param.m)) {
+        info = new user_infomation();
+        info.host = Request.ServerVariables("REMOTE_HOST");
+        info.ua = Request.ServerVariables("HTTP_USER_AGENT");
+        // 時刻
+        info.time = get_current_time();
+
+        // ここで情報を送信
+        var cdo = Server.CreateObject("CDONTS.NewMail");
+        cdo.To = "xxxxx@xxxx.xx.xx";
+        cdo.From = "xxxxx@xxxx.xx.xx";
+        cdo.Subject = "テスト応募";
+        cdo.Body = "名前\t"           + param.n + "\n"
+                 + "ふりがな\t"       + param.k + "\n"
+                 + "メールアドレス\t" + param.m + "\n"
+                 + "コメント\n"       + param.c + "\n\n"
+                 + "REMOTE_HOST\t"    + info.host + "\n"
+                 + "HTTP_USER_AGENT\t" + info.ua + "\n"
+                 + "TIME\t"            + info.time + "\n\n";
+        cdo.Send();
+
+        cdo = null;
+        cdo = Server.CreateObject("CDONTS.NewMail");
+        cdo.To = param.m;
+        cdo.From = "xxxxx@xxxx.xx.xx";
+        cdo.Subject = "テストさんくすメール";
+        cdo.Body = param.n + "さん、さんくす\n\n"
+        cdo.Send();
+
+        Response.Redirect("./thankyou.html");
+    } else {
+        text += "&lt;p&gt;&lt;strong&gt;入力に不備があります。&lt;/strong&gt;&lt;/p&gt;\n";
+
+        if (param.m != "") {
+            if (check_mail_address(param.m)) {
+                text += "&lt;p&gt;" + Server.HTMLEncode(param.m) + "はOK&lt;/p&gt;\n";
+            } else {
+                text += "&lt;p&gt;" + Server.HTMLEncode(param.m) + "はNG&lt;/p&gt;\n";
+            }
+        }
+    }
+} else {
+    param = new form_parameter();
+    // Response.Redirect("./test.html"); でもいいかも
+}
+// ////////////////////////////////////////////////////////////////
+%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS"&gt;
+  &lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;
+  &lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;
+  &lt;meta name="robots" content="noindex,nofollow"&gt;
+  &lt;meta name="robots" content="noarchive"&gt;
+  &lt;title&gt;てすとよう&lt;/title&gt;
+  &lt;script type="text/javascript" src="test.js" charset="Shift_JIS"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;応募フォーム&lt;/h1&gt;
+  &lt;p&gt;応募の際の注意点を書く&lt;/p&gt;
+
+&lt;% = text %&gt;
+
+&lt;form method="POST" action="test.asp" id="entry_form" onsubmit="return validate(this);"&gt;
+&lt;dl&gt;
+  &lt;dt&gt;氏名:&lt;/dt&gt;
+  &lt;dd&gt;&lt;input type="text" size="20" name="n" id="entry_name" value="&lt;% = Server.HTMLEncode(param.n) %&gt;"&gt;&lt;/dd&gt;
+  &lt;dt&gt;ふりがな:&lt;/dt&gt;
+  &lt;dd&gt;&lt;input type="text" size="20" name="k" id="entry_kana" value="&lt;% = Server.HTMLEncode(param.k) %&gt;"&gt;&lt;/dd&gt;
+  &lt;dt&gt;メールアドレス:&lt;/dt&gt;
+  &lt;dd&gt;&lt;input type="text" size="30" name="m" id="entry_mail" value="&lt;% = Server.HTMLEncode(param.m) %&gt;"&gt;&lt;/dd&gt;
+  &lt;dt&gt;コメント:&lt;/dt&gt;
+  &lt;dd&gt;&lt;textarea rows="10" cols="40" name="c" id="entry_comment"&gt;&lt;% = Server.HTMLEncode(param.c) %&gt;&lt;/textarea&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;応募の際の確認事項を書く&lt;/p&gt;
+&lt;p&gt;&lt;input type="submit" name="s" value="上記に同意して送信"&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+					</textarea>
+				</div>
+				<div class="bodytext" style="padding:12px;" align="justify">
+			        ポイントは、メールを送信する時に、担当者宛てと、応募者にそれぞれ<br />
+					<br />
+					<span class="impactunderline">var cdo = Server.CreateObject("CDONTS.NewMail");</span><br />
+					<br />
+					を使って<br />
+					<br />
+					<span class="impactunderline">cdo.Send();</span><br />
+					<br />
+					をするところです。２通送っているだけです・・・。<br />
+					<br />
+					また、送信が完了した場合には、Thankyouページを開くために<br />
+					<br />
+					<span class="impactunderline">Response.Redirect("./thankyou.html");</span><br />
+					<br />
+					で、URLリダイレクト処理をいれています。<br />
+					<br />
+					Server.HTMLEncode で文字列をエンコードするのを忘れると文字化けしますのでご注意下さい。<br />
+				</div>
+			</div>
+
+			<div id="leftpanel">
+
+				<div align="justify" class="graypanel">
+					<h3>アイプランニング技術情報</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+					このページでは、アイプランニング社員が調査したこと、学んでいることが具体的にどんなものなのかを披露してきます。
+					プログラム初心者の方向けの情報から、超マニアックな分野の情報まで随時提供していきますのでお楽しみ下さい。<br />
+					<br />
+					<a href="index.html">技術情報TOPページ</a>
+					</div>
+				</div>
+
+				<div align="justify" class="graypanel">
+					<h3>ASP(ActiveServerPages)とは？</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+						動的にWebページを生成するWebサーバの拡張機能の一つ。通常はWebブラウザに渡されてから処理されるJavaScriptやVBScriptなどで記述されたスクリプトをサーバ側で処理し、処理結果のみをブラウザに送信する。<br />
+						Microsoft社のWebサーバであるIISで利用できる。ブラウザからデータを受け取ってファイルに記録したり、データベースと連携した動的なWebページを作成したりすることができる。<br />
+						[引用：IT用語辞典 <a href="http://e-words.jp/w/ASP-1.html" rel="nofolow">ASPとは</a>]<br />
+					</div>
+				</div>
+
+				<div align="justify" class="graypanel">
+					<h3>プログラマ募集中・・・</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+					<b>■</b><span class="underline">第一は「人物重視」</span><br />
+					お客さまの立場に立ってモノが作れる判断力、企画力、コンサルティング能力を磨きたくはありませんか？プログラム能力は、プロジェクトを通じて自然と能力があがるようなシステムになっています。初心者プログラマであっても３年程度で、その能力は初心者だったとは思えないくらいのスキルとなっています。<br />
+					これは、「最初は誰でも初心者だ」という教育方針があるため、また、多くの社員が入社して初めてプログラミングにふれたという経験があるために自分のつまづき体験や、成功体験を含めた教育がなされているからなのです。<br />
+					このようにアイプランニングでは、社員１人ひとりの個性と人間性を重視し、スキルにあったマンツーマン教育であなたを一人前のエンジニアへと成長させていきます。
+					それは誠実なスタッフが集まっているからこそ、どんなお客様からも信頼される企業に成長できるから。私たちはそう考えています。
+					</div>
+					<div class="subtext" style="padding:12px;" align="justify">
+					<b>■</b><span class="underline">応募者へのメッセージ</span><br />
+					プログラマを目指して会社に入ったものの、思った通りの仕事をさせてもらえなかったと思っている人、教育システムが十分でなかったためにスキルが身に付いていないと思っている人も気軽にご応募ください。パソコンのスキルに自信のない方でも、マンツーマンの研修制度で一人前に成長できるフィールドを整えておりますので安心してご応募くださいね。<br />
+					知識だけでなく本当の開発力が身につく環境でのシステム開発でみつかる『やりがい』はもちろん、プライベートでも今までになかった充実感が得られますよ。<br />
+					<ul>
+					<li><a href="../recruit/new.html">⇒新卒応募ページはこちら</a></li>
+					<li><a href="../recruit/tyuto.html">⇒中途応募ページはこちら</a></li>
+					<ul>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<div id="footer" class="smallgraytext">
+				<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a>
+				| 株式会社 アイプランニング 
+				&copy; 1987 
+			</div>
+		</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write("\<script src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'>\<\/script>" );
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3244420-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+	</div>
+</body>
+
+</html>

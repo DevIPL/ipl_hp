@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://www.ipl.co.jp/item/jws/" href="test.jnlp">
+
+	<information>
+		<title>Java認証テスト</title>
+		<vendor>ＩＰＬ</vendor>
+        <homepage href="../index.html" />
+		<description>CAテストJar</description>
+	</information>
+	<resources>
+		<j2se version="1.7+"/>
+		<jar href="JwsCA.jar"/>
+	</resources>
+	<security>
+	   <all-permissions/>
+	</security>
+	<application-desc main-class="jwsca.JwsCA"/>
+</jnlp>

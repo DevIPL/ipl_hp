@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<TITLE>キャラクタアニメーション</TITLE>
+
+<script language="JavaScript">
+<!--
+text = "";
+textcounter = 0;
+rotatechar = "A".charCodeAt(0);
+fixedtext = "";
+
+function init(){
+  text = document.getElementById("animtxt").innerHTML;
+  document.getElementById("animtxt").innerHTML = "";
+  timerID = setInterval(myTimer, 10);
+}
+
+function myTimer(){
+  if(text.charCodeAt(textcounter) == rotatechar){
+    fixedtext += String.fromCharCode(rotatechar);
+    rotatechar = "A".charCodeAt(0);
+    textcounter++;
+  }else{
+    rotatechar++;
+  }
+  if (textcounter == text.length){
+    clearInterval(timerID);
+    return;
+  }
+  document.getElementById("animtxt").innerHTML = fixedtext + String.fromCharCode(rotatechar);
+}
+//-->
+</script>
+</HEAD>
+<BODY onload="init()">
+<DIV ID="animtxt">I_Planning_Cooperation</DIV>
+</BODY>
+</HTML>

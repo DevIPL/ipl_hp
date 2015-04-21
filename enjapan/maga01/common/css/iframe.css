@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* ===============
+clearfix
+=============== */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {display: inline-block;}
+/*\*/
+* html .clearfix {height: 1%}
+.clearfix {display:block;}
+/**/
+
+/*IE6横スクロールバー消去回避策*/
+html{
+	overflow-y: scroll;
+}
+
+/*================
+INDEX
+================*/
+
+/*basic*/
+
+
+body{
+	color:#fff;
+    background-color:transparent;
+	text-align:left;
+	font-size:70%;
+	line-height:1.4;
+}
+
+
+/*basic-layout*/
+
+div#wrapper{
+	margin:0 0 0 10px;
+}
+	
+div.box{
+	width:410px;
+	margin:0 0 50px 0;
+}
+
+div.box div.title_q,
+div.box div.title_a{
+	font-size:136%;
+	padding:0 0 5px 0;
+}
+
+div.box div.title_q{
+border-bottom:solid 1px #fff;
+}
+
+div.box div.title_q p{
+	padding:0 0 3px 0;
+}
+
+div.box div.title_a{
+	padding:5px 0 10px 0;
+}
+
+
+/*==================
+link
+==================*/
+
+a:link,
+a:visited,
+a:active{
+	text-decoration:none;
+	color:#fff;
+}
+
+a:hover{
+	text-decoration:none;
+	color:#fff;
+}
+
+a:focus {
+	outline:none;
+}

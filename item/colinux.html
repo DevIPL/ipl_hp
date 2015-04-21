@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="Shift_Jis"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="jp" lang="jp">
+<head>
+	<meta name="author" content="Wink Hosting (www.winkhosting.com)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+	<meta name="keywords" content="coLinux,Linux,Windows,構築,UNIX学習,Linuxカーネル,ソフトハウス,プログラマ,SE" />
+	<meta name="description" content="coLinuxでUNIX学習 Linux環境をWindows上に構築 | 技術情報" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" href="../images/style.css" type="text/css" />
+	<title>coLinuxでUNIX学習 Linux環境をWindows上に構築 | 技術情報</title>
+</head>
+<body>
+	<div id="page" align="center">
+		<div id="content" style="width:800px">
+			<div id="logo">
+				<div style="margin-top:70px" class="whitetitle">IPlanning</div>
+			</div>
+			<div id="topheader">
+				<div align="left" class="infotext">
+					<br />
+					<h1>株式会社 アイプランニング</h1><br />
+					Towa Edogawabashi building 8F<br />
+					Yamabuki-cho 347<br />
+					Shinjuku-ku Tokyo<br />
+					Phone: 03-5225-1147<br />
+				</div>
+				<div id="toplinks" class="smallgraytext">
+					<a href="../index.html">HOME</a> | <a href="../privacy/index.html" target="_blank">個人情報保護方針</a> | <a href="../sitemap.html">サイトマップ</a> | <a href="../contact/index.html">問い合わせ</a>
+				</div>
+			</div>
+			<div id="menu">
+				<div align="right" class="smallwhitetext" style="padding:9px;">
+					<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a>
+				</div>
+			</div>
+			<div id="submenu">
+				<div align="right" class="smallgraytext" style="padding:9px;">
+					<a href="../about/index.html">代表からの挨拶</a> | <a href="../recruit/new.html">新卒募集</a> | <a href="../recruit/tyuto.html">中途募集</a> | <a href="../voice/index.html">社員の声</a> | <a href="../circle/index.html">サークル活動</a> | <a href="../link/index.html">リンク</a>
+				</div>
+			</div>
+			<div id="contenttext"  align="justify">
+		<div style="padding:70px 10px 15px 0px">
+			<span class="titletext"><strong>coLinuxでUNIX学習</strong></span>
+			<p style="padding:8px;font-size:18px;font-weight:bold;text-align:left;line-height:130%;">
+				Linux環境をWindows上に構築することが出来る、coLinuxを<br />使って、Unixコマンドの学習環境を構築しました。
+			</p>
+		</div>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			仕事でUnixサーバにログインすることがあったのですが、Windows/MS-DOS環境しか<br />
+			使ったことがなかったので、コマンドや概念の違いに驚きました。<br />
+			今回はcoLinuxを使って、自分専用の練習用Unix環境を作ってみることにします。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>何を使うのか？</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			いろいろ調べて、Cygwin、UnxUtilsなど、手軽に導入できそうな環境があることが分かりました。<br />
+			WindowsをUnixのように使えるのもいいんですが、<br />
+			LinuxとWindowsとの違いも勉強したかったので、<br />
+			本物のLinuxカーネルを使える<strong>coLinux</strong>を試してみることにしました。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h2>１．インストール</h2>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			まず、coLinuxのstable（安定版）インストーラを取得します。<br />
+			[<a href="http://www.colinux.org/">coLinuxオフィシャル（英語）</a>]<br />
+			今回インストールしたのは、<strong>"coLinux-0.7.2.exe"</strong>です。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			以下のリンク先を参考にインストールしてください。<br />
+			[<a href="http://scratchpad.fc2web.com/colinux/index.html">Cooperative Linux(coLinux)のメモ</a>]<br />
+			<strong>注）「coLinux 0.7.xのインストール」→「<a href="http://scratchpad.fc2web.com/colinux/install-0.7/index.html">coLinux 0.7.xのインストール</a>」を参照してください。</strong><br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			基本的に以上のサイトのとおりにインストールできます。<br />
+			私はディストリビューションにはDebian4.0を選択しました。<br />
+			<img src="co01_dist.png" /><br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			ネットワークの設定が必要な分、CygwinやUnxUtilsと比べるとインストールが大変です。<br />
+			私がインストールで詰まった点は以下のとおりです。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>Pingが通らない</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			ホストからcoLinuxへPingは通ったんですが、<br />
+			coLinuxからホストへ通らず悩んでしまいました。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			原因は、単にファイアウォールで遮断されていただけでした。<br />
+			ファイアウォールを使っている場合、<br />
+			一時的にPingを通す設定にしてみてください。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>apt-getでtime outが発生する</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			私の環境ではプロキシが通っていたため、<br />
+			<strong>apt-get update</strong><br />
+			で詰まりました。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			apt-getをプロキシ経由で実行するには、aptの設定ファイルを編集する必要があります。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			<strong>editor /etc/apt/apt.conf.d/70debconf</strong><br />
+			で設定ファイルを編集します。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			設定ファイルに、以下の行を加えてください。<br />
+			<strong>Acquire::http::Proxy "http://プロキシサーバ:ポート/";<br />
+			Acquire::ftp::Proxy "http://プロキシサーバ:ポート/";</strong><br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			Ctrl + oで保存した後、<br />
+			Ctrl + xで終了します。<br />
+			（ちなみに、debianでは標準で入っているこのエディタは「GNU nano」というそうです。<br />
+			　メモ帳とそう操作が変わらず、常にコマンド一覧が表示されていて分かりやすいので、<br />
+			　ちょっとファイルを編集したいだけ、というときには便利そうです。）<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			これでapt-get updateできるようになります。<br />
+			update後に、やっとviなどの標準的なunixツールが使えるようになります。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h2>２．UNIXコマンドを試す</h2>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			ついdir/wとかやってしまいますが、<br />
+			unixではlsを使います。LiSt directoryの略だそうです。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>UNIXコマンド例</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			コマンド例をいくつか挙げます。<br />
+			<table border="1px">
+				<tr><td>ls</td><td>ディレクトリの内容を表示する</td></tr>
+				<tr><td>ls > test.txt</td><td>ディレクトリの内容をtest.txtに出力する（リダイレクト）</td></tr>
+				<tr><td>rm test.txt</td><td>test.txtを削除する</td></tr>
+				<tr><td>cat test.txt</td><td>test.txtの内容を表示する</td></tr>
+				<tr><td>more test.txt</td><td>test.txtの内容を表示する（スクロール可能）</td></tr>
+				<tr><td>ls | more</td><td>ディレクトリの内容を表示する（パイプでmoreに渡すことで、スクロール可能）</td></tr>
+				<tr><td>mkdir test</td><td>ディレクトリ"test"を作成</td></tr>
+				<tr><td>rmdir test</td><td>ディレクトリ"test"を削除</td></tr>
+				<tr><td>cd test</td><td>ディレクトリ"test"に移動</td></tr>
+				<tr><td>cd ~</td><td>ホームディレクトリに移動</td></tr>
+				<tr><td>cd /</td><td>ルートに移動</td></tr>
+				<tr><td>cd ..</td><td>親ディレクトリに移動</td></tr>
+				<tr><td>logout -h now</td><td>終了</td></tr>
+			</table>
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			以下のサイトで、UNIXコマンドとMS-DOSコマンドの対応表を読むことが出来ます。<br />
+			[<a href="http://ash.jp/linux/cmd_unix.htm">ASH Multimedia lab. - UNIX基本コマンド</a>]<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h2>３．エディタを使う</h2>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			ほとんどのUNIXシステムで標準インストールされているviを使ってみます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>viの基礎</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			<strong>vi test.txt</strong><br />
+			と入力すると、以下の画面が出ます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			<img src="co02_con.png" /><br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			viの拡張版のvimがインストールされていれば、違った表示になります。<br />
+			viで使えるコマンドはvimでも有効ですので、まずはviのコマンドを覚えましょう。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			viでは「コマンド・挿入・置換・コマンドライン」の<br />
+			４つのモードを切り替えながら入力と編集を行っていきます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			まず、文字を入力するには、iキーを押して挿入モードに切り替えなくてはいけません。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			入力を終了しコマンドモードに戻るにはESCキーを押します。<br />
+			（Ctrl+[キーでもOKです）<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			終了は、コマンドモード時に<br />
+			「<strong>:q!</strong>」（保存せずに終了）<br />
+			です。<br />
+			<strong>ESC :q!</strong>　と入力すれば<br />
+			とりあえずどこからでも終了できます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h3>編集コマンド</h3>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			削除は、挿入モードでDelキーを押すことでも出来ますが、<br />
+			ESCでコマンドモードに入っていれば、以下のコマンドが使えます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			削除系<br />
+			<table border="1px">
+				<tr><td>x</td><td>一文字削除</td></tr>
+				<tr><td>dd</td><td>行削除</td></tr>
+				<tr><td>dw</td><td>単語削除</td></tr>
+			</table>
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			コマンドモードで、コピーアンドペーストが出来ます。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			コピー<br />
+			<table border="1px">
+				<tr><td>yy</td><td>行ごとコピー</td></tr>
+				<tr><td>yw</td><td>カーソル位置の単語をコピー</td></tr>
+			</table>
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			ペースト<br />
+			<table border="1px">
+				<tr><td>p</td><td>カーソル位置の後ろにペースト</td></tr>
+				<tr><td>P</td><td>カーソル位置の前にペースト</td></tr>
+			</table>
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			などがあります。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			大文字Pの方がWindows使いにはなじみのある挙動かも知れません。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		<h2>４．まとめ</h2>
+		<div class="bodytext" style="padding: 12px;" align="justify"><p style="margin: 5px 5px 5px 0px;">
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			ここまでで、ファイルの編集と簡単なファイル操作が出来るようになりました。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+			せっかく構築した本物のLinux環境ですから、<br />
+			今後はシェルスクリプトの学習などに使っていこうと思っています。<br />
+			</p>
+			<p style="margin: 5px 5px 5px 0px;">
+		</p></div>
+		</div>
+			<div id="leftpanel">
+
+				<div align="justify" class="graypanel">
+					<h3>アイプランニング技術情報</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+					このページでは、アイプランニング社員が調査したこと、学んでいることが具体的にどんなものなのかを披露してきます。
+					プログラム初心者の方向けの情報から、超マニアックな分野の情報まで随時提供していきますのでお楽しみ下さい。<br />
+					<br />
+					<a href="index.html">技術情報TOPページ</a>
+					</div>
+				</div>
+
+				<div align="justify" class="graypanel">
+					<h3>参考サイト</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+						<p><a href="http://www.colinux.org/">coLinuxオフィシャルサイト</a><br /></p><p>&nbsp;</p>
+						<p><a href="http://scratchpad.fc2web.com/colinux/index.html">Cooperative Linux(coLinux)のメモ</a><br /></p><p>&nbsp;</p>
+						<p><a href="http://ash.jp/linux/cmd_unix.htm">ASH Multimedia lab. ： UNIX基本コマンド</a><br /></p><p>&nbsp;</p>
+						<p><a href="http://www.ne.jp/asahi/hishidama/home/tech/unix/unix.html">ひしだま's ホームページ：UNIXの基礎知識</a><br /></p><p>&nbsp;</p>
+						<p><a href="http://www.si-linux.co.jp/wiki/silinux/index.php?CoLinux">Silicon Linux Wiki：CoLinux</a><br /></p><p>&nbsp;</p>
+					</div>
+				</div>
+
+				<div align="justify" class="graypanel">
+					<h3>プログラマ募集中・・・</h3>
+					<div class="subtext" style="padding:12px;" align="justify">
+					<b>■</b><span class="underline">第一は「人物重視」</span><br />
+					お客さまの立場に立ってモノが作れる判断力、企画力、コンサルティング能力を磨きたくはありませんか？プログラム能力は、プロジェクトを通じて自然と能力があがるようなシステムになっています。初心者プログラマであっても３年程度で、その能力は初心者だったとは思えないくらいのスキルとなっています。<br />
+					これは、「最初は誰でも初心者だ」という教育方針があるため、また、多くの社員が入社して初めてプログラミングにふれたという経験があるために自分のつまづき体験や、成功体験を含めた教育がなされているからなのです。<br />
+					このようにアイプランニングでは、社員１人ひとりの個性と人間性を重視し、スキルにあったマンツーマン教育であなたを一人前のエンジニアへと成長させていきます。
+					それは誠実なスタッフが集まっているからこそ、どんなお客様からも信頼される企業に成長できるから。私たちはそう考えています。
+					</div>
+					<div class="subtext" style="padding:12px;" align="justify">
+					<b>■</b><span class="underline">応募者へのメッセージ</span><br />
+					プログラマを目指して会社に入ったものの、思った通りの仕事をさせてもらえなかったと思っている人、教育システムが十分でなかったためにスキルが身に付いていないと思っている人も気軽にご応募ください。パソコンのスキルに自信のない方でも、マンツーマンの研修制度で一人前に成長できるフィールドを整えておりますので安心してご応募くださいね。<br />
+					知識だけでなく本当の開発力が身につく環境でのシステム開発でみつかる『やりがい』はもちろん、プライベートでも今までになかった充実感が得られますよ。<br />
+					<ul>
+					<li><a href="../recruit/new.html">⇒新卒応募ページはこちら</a></li>
+					<li><a href="../recruit/tyuto.html">⇒中途応募ページはこちら</a></li>
+					<ul>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<div id="footer" class="smallgraytext">
+				<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a>
+				| 株式会社 アイプランニング 
+				&copy; 1987 
+			</div>
+		</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write("\<script src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'>\<\/script>" );
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3244420-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+	</div>
+</body>
+
+</html>

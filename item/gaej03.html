@@ -1,0 +1,495 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<?xml version="1.0" encoding="Shift_Jis"?><html lang="jp" xml:lang="jp" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<meta content="MSHTML 6.00.2900.3636" name="GENERATOR">
+	<meta name="author" content="Wink Hosting (www.winkhosting.com)" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" /> 
+	<meta name="keywords" content="Google App Engine,GAE,Java,BigTable,ソフトハウス,プログラマ,SE" /> 
+	<meta name="description" content="第三回　Google App Engine/Javaで簡易Blogを作ってみる | 技術情報" /> 
+	<meta http-equiv="Content-Style-Type" content="text/css" /> 
+	<link rel="stylesheet" href="../images/style.css" type="text/css" /> 
+    <style type="text/css">div.bodytext p{padding:0px 12px 24px 12px}</style>
+
+</head>
+<body>
+
+
+	<div id="page" align="center"> 
+		<div id="content" style="width:800px"> 
+			<div id="logo"> 
+				<div style="margin-top:70px" class="whitetitle">IPlanning</div> 
+			</div> 
+			<div id="topheader"> 
+				<div align="left" class="infotext"> 
+					<br /> 
+					<h1>株式会社 アイプランニング</h1><br /> 
+					Towa Edogawabashi building 8F<br /> 
+					Yamabuki-cho 347<br /> 
+					Shinjuku-ku Tokyo<br /> 
+					Phone: 03-5225-1147<br /> 
+				</div> 
+				<div id="toplinks" class="smallgraytext"> 
+					<a href="../index.html">HOME</a> | <a href="../privacy/index.html" target="_blank">個人情報保護方針</a> | <a href="../sitemap.html">サイトマップ</a> | <a href="../contact/index.html">問い合わせ</a> 
+				</div> 
+			</div> 
+			<div id="menu"> 
+				<div align="right" class="smallwhitetext" style="padding:9px;"> 
+					<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a> 
+				</div> 
+			</div> 
+			<div id="submenu"> 
+				<div align="right" class="smallgraytext" style="padding:9px;"> 
+					<a href="../about/index.html">代表からの挨拶</a> | <a href="../recruit/new.html">新卒募集</a> | <a href="../recruit/tyuto.html">中途募集</a> | <a href="../voice/index.html">社員の声</a> | <a href="../circle/index.html">サークル活動</a> | <a href="../link/index.html">リンク</a> 
+				</div> 
+			</div> 
+			<div id="contenttext"  align="justify"> 
+				<div style="padding:70px 10px 15px 0px"> 
+					<span class="titletext"><strong>第三回　Google App Engine/Javaで簡易Blogを作ってみる</strong></span> 
+					<p style="padding:8px;font-size:18px;font-weight:bold;text-align:left;line-height:130%;"> 
+					Google App Engine連載記事です。Google App Engine/JavaでServletとJSPを使用し、簡易Blogを作成します。</p> 
+				</div> 
+<div class="bodytext" style="padding: 12px; align: justify"> 
+<p>目次</p>
+<p><a href="gaej01.html">第一回　Google App Engine/Javaの特徴・Eclipseプラグインのインストール</a><br>
+<a href="gaej02.html">第二回　Google App Engine/Javaデータストアの特徴</a><br>
+第三回　Google App Engine/Javaで簡易Blogを作ってみる<br>
+</p>
+<h2>CRUDアプリを作る</h2>
+<p>GAE/Jのデータストアを理解するために、簡易ブログを作りました。</p>
+<p><img height="458" alt="簡易Blogの画面" src="blog.png" width="317" border="0"></p>
+<p>データストアには、記事エンティティと、コメントエンティティがあり、<br>
+それぞれに対してCreate, Insert, Update, 
+Deleteが行えるような設計にします。</p>
+<h2>Webアプリ配備までの大まかな手順</h2>
+<p>コーディングの前に、どのような手順を踏んでアプリケーションを作成するか、大まかに説明します。</p>
+<p><strong>１．Eclipseでプロジェクトの作成</strong></p>
+<p><img height="256" alt="" src="eclipse_autogen.png" width="275" border="0"></p>
+<p>Eclipseから、Google App Engineプロジェクトの作成をすると、<br>
+以上のファイルが自動生成されます。</p>
+<p><img height="32" alt="" src="eclipse_icons.png" width="205" border="0"></p>
+<p>この状態から、Debugを選択して起動すると、PureJavaのウェブサーバJettyがローカルで起動し<a href="http://localhost:8888/">http://localhost:8888/</a>でアクセスが可能になります。</p>
+<p><strong>２．データクラスの作成</strong></p>
+<p>GAEで、オブジェクトをデータストアに格納可能にするには、<br>
+データクラスに以下の指定が必要です。</p>
+<p>・<em>@PersistenceCapable</em>アノテーションの指定<br>
+・保存するフィールドに<em>@Persistent</em>アノテーションの指定<br>
+・主キーとなるフィールドに<em>@Persistent(valueStrategy 
+= IdGeneratorStrategy.IDENTITY)</em>アノテーションの指定</p>
+<p>主キーは、Long(連番)や、Key（インデックスやエンティティ情報を持つ）、任意の文字列等から選択します。<br>
+関連を使う場合は、Keyを選択する必要があります。<br>
+詳しくは<a href="http://code.google.com/intl/ja/appengine/docs/java/datastore/creatinggettinganddeletingdata.html#Keys">公式ドキュメントの該当箇所</a>を参照してください。</p>
+<p><strong>３．ロジックの作成</strong></p>
+<p>データ操作部分のコードを書きます。<br>
+大抵の操作は、PersistenceManagerを通して行うことになると思います。</p>
+<p><strong>データのinsert<br>
+</strong>PersistenceManagerクラスのinsertに、対象オブジェクトを指定すると、オブジェクトの状態がデータストアに保存されます。<br>
+リレーショナルDBのように、あらかじめテーブルを作成する必要はありません。<br>
+なお、主キーは自動的に採番されます。</p>
+<p><strong>データのselect<br>
+</strong>PersistenceManagerクラスのgetObjectByIdで、主キーを元にオブジェクトを取得できます。<br>
+また、JDOQLというSQLライクなクエリで検索をかけることも出来ます。<br>
+ただし、インデックス化されないText（長い文字列）や、Blobのようなプロパティは検索できません。</p>
+<p><strong>データのdelete<br>
+</strong>PersistenceManagerクラスのdeleteに、削除対象のオブジェクトを指定します。</p>
+<p><strong>４．ビュー部分の作成</strong></p>
+<p>Servletで直接レスポンスを返すか、JSPを用いてビューとなる部分を作成します。</p>
+<p><strong>５．デプロイ</strong></p>
+<p>
+アプリケーションをデプロイするには、まずGoogleアカウントと、GAEへの登録が必要です。<br>
+Googleアカウントだけなら、メールアドレスがあれば取得できますが、<br>
+GAEは携帯メールでの認証が必要です。</p>
+<p><img src="verifyaccount.png" width="400" height="265"></p>
+<p>登録が済んだら、アプリケーションをアップロードしましょう。</p>
+<p><img height="29" alt="" src="eclipse_deploy_icon.png" width="187" border="0"><br>
+デプロイボタンを押します。</p>
+<p><img height="249" alt="" src="eclipse_deploy_dialog.png" width="400" border="0"></p>
+<p>次に、GAEのアプリケーションIDを取得します。<br>
+App Engine project 
+settingをクリックし、プロジェクトのプロパティを開きます。</p>
+<p><img height="346" alt="" src="eclipse_aplication_prop.png" width="400" border="0"></p>
+<p>My applicationsをクリックすると、GAE管理画面へのログイン画面がブラウザに表示されます。<br>
+<img height="193" alt="" src="create_webapp.png" width="391" border="0"></p>
+<p>作成するアプリケーションは、<em>任意のID.appspot.com</em>にデプロイされます。<br>
+なお、最大１０のアプリケーションを作成することが出来ます。</p>
+<p>アプリケーションIDを取得したら、プロジェクトのApplication ID欄に記入し、<br>
+デプロイを実行します。</p>
+<p>以上で、簡単な流れの説明を終わります。<br>
+次に、実際のコードを示します。</p>
+<h2>データクラスの設計</h2>
+<p>まずはデータクラスの設計です。</p>
+<p>ブログは、記事がコメントを所有する一対多関係になっています。<br>
+記事とコメントの関連には、ownedを使います。</p>
+<p><img height="263" alt="class Articleとclass Comment。Articleは複数のCommentを持つ" src="uml_owned.png" width="199" border="0"></p>
+<p>class Article（記事）</p>
+<p><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Article {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key id;
+
+	PersistenceManager pm = PMF.get().getPersistenceManager();
+
+	List&lt;Comment&gt; comments = new ArrayList&lt;Comment&gt;();
+	
+	public String getKeyStr() {
+		return KeyFactory.keyToString(id);
+	}
+	
+	/**
+	 * @return the options
+	 */
+	public List&lt;Comment&gt; getComments() {
+		return comments;
+	}
+
+	/**
+	 * @param comments the options to set
+	 */
+	public void setComments(List&lt;Comment&gt; comments) {
+		this.comments = comments;
+	}
+
+	@Persistent
+	private String text;
+
+	@Persistent
+	private Date date;
+//setter,getterは略
+}
+</textarea></p>
+<p>class Comment（コメント）</p>
+<p><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Comment {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	private Key id;
+	PersistenceManager pm = PMF.get().getPersistenceManager();
+
+	@Persistent
+	private String text;
+
+//setter,getterは略
+	
+}</textarea></p>
+<p>＜ポイント＞<br>
+親クラスのフィールドに、子クラスのオブジェクトを設定できます。<br>
+一対多関係にするには、型をList&lt;子エンティティ型&gt;にします。<br>
+このフィールドを更新し、接続を閉じると、子エンティティがデータストアにコミットされます。</p>
+<p>ownedを利用する場合は、プライマリキーをKey型にする必要があります。<br>
+このKey型は、エンティティ情報とインデックスを持っており、KeyFactory.keyToString(Key)で文字列表現に変換することが出来ます。</p>
+<p>双方向の参照が必要な場合は、子クラスに@Persistent(mappedBy = "フィールド名")を指定する必要があります。<br>
+詳しくは<a href="http://code.google.com/intl/ja/appengine/docs/java/datastore/relationships.html#Owned_One_to_One_Relationships">公式ドキュメント</a>を参照してください。</p>
+<h2>データアクセスクラスの作成</h2>
+<p>記事テーブルの操作を担当するクラスです。</p>
+<p><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">public class ArticleDao {
+	public void insert(PersistenceManager pm, Article info) {
+		pm.makePersistent(info);
+	}
+	public void update(PersistenceManager pm, Article info) {
+		insert(pm, info);
+	}
+	public void delete(PersistenceManager pm, Article info) {
+		pm.deletePersistent(info);
+	}
+	public Article selectKey(PersistenceManager pm, Key id) {
+		return pm.getObjectById(Article.class, id);
+	}
+}</textarea></p>
+<p>接続を取得するユーティリティクラスです。</p>
+<p><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">public final class PMF {
+    private static final PersistenceManagerFactory pmfInstance =
+        JDOHelper.getPersistenceManagerFactory("transactions-optional");
+
+    private PMF() {}
+
+    public static PersistenceManagerFactory get() {
+        return pmfInstance;
+    }
+}</textarea></p>
+<h2>サーブレットの作成</h2>
+<p>Get,Postメソッドを処理するサーブレットです。</p>
+<p><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">@SuppressWarnings("serial")
+public class BigTableServlet extends HttpServlet {
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.setContentType("text/plain");
+		resp.setCharacterEncoding("utf-8");
+		String action = (String)req.getParameter("action");
+		String id = (String)req.getParameter("id");
+		
+		if(action == null||id == null) {
+			resp.getWriter().print("パラメータが異常です。");
+			return;
+		}
+		
+		if(action.equals("deletecomment")) {
+			deleteComment(KeyFactory.stringToKey(id));
+		}
+		if(action.equals("delete")) {
+			delete(KeyFactory.stringToKey(id));
+		}
+		resp.sendRedirect("/");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/plain");
+		resp.setCharacterEncoding("utf-8");
+
+		String action = (String)req.getParameter("action");
+		String id = (String)req.getParameter("id");
+		String text = (String)req.getParameter("text");
+
+		if(action == null) {
+			resp.getWriter().print("パラメータが異常です。");
+			return;
+		}
+		if(action.equals("insert")) {
+			insert(text);
+		}
+		if(action.equals("edit")) {
+			if(id == null) {
+				resp.getWriter().print("パラメータが異常です。");
+				return;
+			}
+			update(text, KeyFactory.stringToKey(id));
+		}
+
+		if(action.equals("addcomment")) {
+			if(id == null) {
+				resp.getWriter().print("パラメータが異常です。");
+				return;
+			}
+			addComment(text, KeyFactory.stringToKey(id));
+		}
+		resp.sendRedirect("/");
+	}	
+	
+	private void insert(String text) {
+		ArticleDao dao = new ArticleDao();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Article info = new Article(text, new Date());
+		dao.insert(pm, info);
+		pm.close();
+	}
+	
+	private void update(String text, Key id) {
+		ArticleDao dao = new ArticleDao();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Article info = (Article)pm.getObjectById(Article.class,id);
+		info.setText(text);
+		dao.update(pm, info);
+		pm.close();
+		
+	}
+	private void delete(Key id) {
+		ArticleDao dao = new ArticleDao();
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Article info = (Article)pm.getObjectById(Article.class,id);
+		if(info == null) {
+			return;
+		}
+		dao.delete(pm, info);
+		pm.close();
+	}
+	
+	private void addComment(String text, Key articleId) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Article article = (Article)pm.getObjectById(Article.class,articleId);
+		
+		List&lt;Comment&gt; comments = article.getComments();
+		Comment info = new Comment(text);
+		comments.add(info);
+		pm.close();
+	}
+	
+	
+	private void deleteComment(Key id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Comment info = (Comment)pm.getObjectById(Comment.class,id);
+		CommentDao dao = new CommentDao();
+		dao.delete(pm, info);
+		pm.close();
+	}
+}
+</textarea></p>
+<p>＜ポイント＞<br>
+普通のServletと同じように書くことが出来ます。<br>
+web.xmlを編集し、適当なURLに関連付けておきましょう。<br>
+書き方は、一般的なサーブレットコンテナと一緒です（<a href="http://www.hellohiro.com/servletwebxml.htm">参考</a>）</p>
+<h2>JSPの作成</h2><textarea style="WIDTH: 400px; HEIGHT: 256px" rows="11" wrap="off" cols="67">&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+&lt;%@ page import="com.google.appengine.api.users.User" %&gt;
+&lt;%@ page import="com.google.appengine.api.users.UserService" %&gt;
+&lt;%@ page import="com.google.appengine.api.users.UserServiceFactory" %&gt;
+&lt;%@ page import="javax.jdo.PersistenceManager" %&gt;
+&lt;%@ page import="java.util.List" %&gt;
+
+&lt;%@ page import="jp.co.ipl.gae.dbtest.*" %&gt;
+&lt;%@ page import="jp.co.ipl.gae.dbtest.dao.*" %&gt;
+&lt;%@ page import="jp.co.ipl.gae.dbtest.data.*" %&gt;
+&lt;%@ page import="jp.co.ipl.gae.dbtest.util.*" %&gt;
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;簡易ブログ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="background: #DDDDFF;"&gt;
+&lt;form action="/sv" method="post"&gt;
+	&lt;input type="hidden" name="action" value="insert" /&gt;
+	&lt;textarea name="text" style="width: 300px; height: 150px;"&gt;&lt;/textarea&gt;
+	&lt;br&gt;
+	&lt;input type="submit" value="投稿" /&gt;
+&lt;/form&gt;
+
+&lt;%
+PersistenceManager pm = PMF.get().getPersistenceManager();
+try{
+	//全件取得
+	String query = "select from " + Article.class.getName();
+	Object execute = pm.newQuery(query).execute();
+	List&lt;Article&gt; obj = (List&lt;Article&gt;) execute;
+
+for (Article g : obj) {
+%&gt;
+
+&lt;p&gt;
+&lt;div class="post" style="width: 300px; border: solid 1px #FFFFFF;"&gt;
+&lt;div class="post-header"&gt;
+	&lt;div align="right"&gt;&lt;a href="/sv?action=delete&amp;id=&lt;%=g.getKeyStr()%&gt; "&gt;del&lt;/a&gt;
+	&lt;a href="/edit.jsp?id=&lt;%=g.getKeyStr()%&gt;"&gt;edit&lt;/a&gt;&lt;/div&gt;
+	&lt;div style="margin: 10px;"&gt;&lt;!-- text --&gt;
+	&lt;pre&gt;&lt;%=g.getText()%&gt;&lt;/pre&gt;
+	&lt;/div&gt;&lt;!-- text --&gt;
+&lt;/div&gt;&lt;!-- post-header --&gt;
+
+&lt;div class="comments" style="border: dotted 3px #FFFFFF; font-size: 80%;"&gt;
+&lt;p&gt;コメント&lt;/p&gt;
+&lt;ul&gt;
+	&lt;% for (Comment comment : g.getComments()) { %&gt;
+	&lt;li&gt;&lt;%=comment.getText()%&gt;
+	&lt;a href="/sv?action=deletecomment&amp;id=&lt;%=comment.getKeyStr()%&gt; "&gt;x&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;% } %&gt;
+&lt;/ul&gt;
+&lt;div align="center"&gt;&lt;!-- コメントフォーム --&gt;
+&lt;form action="/sv" method="post"&gt;
+	&lt;input type="hidden" name="action" value="addcomment" /&gt;
+	&lt;input type="hidden" name="id" value="&lt;%=g.getKeyStr()%&gt;" /&gt;
+	&lt;input type="text" name="text" /&gt;
+	&lt;input type="submit" value="コメント追加" /&gt;
+&lt;/form&gt;
+&lt;/div&gt;&lt;!-- コメントフォーム --&gt;
+&lt;/div&gt;&lt;!-- comments --&gt;
+&lt;/div&gt;&lt;!-- post --&gt;
+&lt;/p&gt;
+
+
+
+&lt;%
+}
+	pm.close();
+}catch(Exception e){
+	e.printStackTrace();
+}
+%&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</textarea><br>
+
+<p>＜ポイント＞<br>
+war/WEB-INF下に置くことで、自動的にマッピングされます。<br>
+web.xmlを編集し、このjspをwelcome-fileに指定しておきましょう。</p>
+<p><a href="bigtable.zip"><strong>ソースファイルをダウンロード(10KB)</strong></a></p>
+<h2>まとめ</h2>
+<p>標準状態でServlet、JSP等が使えるクラウド環境が、無料で使えるというのはなかなか画期的です。<br>
+試した範囲では、動作がもたつくようなことも無く、さすがはGoogleのインフラ、といった印象でした。</p>
+<p>JDOを扱う前に、BigTableの仕様についてよく知っておく必要があります。<br>
+個人的な感想としては、JDOを使わないPython版のほうが手軽に思えました。<br>
+ただし、JDOは標準的なJava技術ですので、Java 
+EEのソースを移植しやすいという利点があります。</p>
+<p>Java版は、Java 
+EEでの開発経験が生かせるというメリットがありますが、<br>
+それでも、DBがリレーショナルではないため、<br>
+学習コストがゼロとはいかない点も考慮する必要があるでしょう。</p>
+<p>GAEのPython版には、<a href="http://code.google.com/p/google-app-engine-oil/">Google App Engine 
+Oli</a>というコード生成ツールが存在します。<br>
+Ruby on 
+RailsやDjango等のWebアプリケーションフレームワークには、<br>
+Scaffoldという、管理画面を自動生成する機能が存在し、その開発能率の高さから人気がありますが、<br>
+Google 
+App Engine 
+OilはそのScaffoldや、Modelの自動生成などを行えます。<br>
+同様のツールがJava版でも出てくると、流行するかもしれません。</p>
+<p>＜連載終わり＞</p>
+<h2>参考資料</h2>
+<p><a href="http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/installing.html">公式チュートリアル</a><br>
+<a href="http://blog.memo.vg/2009/05/gaejdatastore.html">だらだら備忘録: 
+GAE/JのDatastoreのはなしとか</a> <br>
+<a href="http://d.hatena.ne.jp/higayasuo/20090723/1248315116">GAEでunownedな関連を定義する方法 
+- ひがやすを blog</a> </p>
+</div>
+</div>
+			<div id="leftpanel"> 
+	
+				<div align="justify" class="graypanel"> 
+					<h3>アイプランニング技術情報</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					このページでは、アイプランニング社員が調査したこと、学んでいることが具体的にどんなものなのかを披露してきます。
+					プログラム初心者の方向けの情報から、超マニアックな分野の情報まで随時提供していきますのでお楽しみ下さい。<br /> 
+					<br /> 
+					<a href="index.html">技術情報TOPページ</a> 
+					</div> 
+				</div> 
+	
+				<div align="justify" class="graypanel"> 
+					<h3>参考サイト</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+
+<p><a href="http://code.google.com/intl/ja/appengine/docs/java/gettingstarted/installing.html">公式チュートリアル</a><br>
+<a href="http://blog.memo.vg/2009/05/gaejdatastore.html">だらだら備忘録: 
+GAE/JのDatastoreのはなしとか</a> <br>
+<a href="http://d.hatena.ne.jp/higayasuo/20090723/1248315116">GAEでunownedな関連を定義する方法 
+- ひがやすを blog</a> </p>
+					</div> 
+				</div> 
+	
+				<div align="justify" class="graypanel"> 
+					<h3>プログラマ募集中・・・</h3> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					<b>■</b><span class="underline">第一は「人物重視」</span><br /> 
+					お客さまの立場に立ってモノが作れる判断力、企画力、コンサルティング能力を磨きたくはありませんか？プログラム能力は、プロジェクトを通じて自然と能力があがるようなシステムになっています。初心者プログラマであっても３年程度で、その能力は初心者だったとは思えないくらいのスキルとなっています。<br /> 
+					これは、「最初は誰でも初心者だ」という教育方針があるため、また、多くの社員が入社して初めてプログラミングにふれたという経験があるために自分のつまづき体験や、成功体験を含めた教育がなされているからなのです。<br /> 
+					このようにアイプランニングでは、社員１人ひとりの個性と人間性を重視し、スキルにあったマンツーマン教育であなたを一人前のエンジニアへと成長させていきます。
+					それは誠実なスタッフが集まっているからこそ、どんなお客様からも信頼される企業に成長できるから。私たちはそう考えています。
+					</div> 
+					<div class="subtext" style="padding:12px;" align="justify"> 
+					<b>■</b><span class="underline">応募者へのメッセージ</span><br /> 
+					プログラマを目指して会社に入ったものの、思った通りの仕事をさせてもらえなかったと思っている人、教育システムが十分でなかったためにスキルが身に付いていないと思っている人も気軽にご応募ください。パソコンのスキルに自信のない方でも、マンツーマンの研修制度で一人前に成長できるフィールドを整えておりますので安心してご応募くださいね。<br /> 
+					知識だけでなく本当の開発力が身につく環境でのシステム開発でみつかる『やりがい』はもちろん、プライベートでも今までになかった充実感が得られますよ。<br /> 
+					<ul> 
+					<li><a href="../recruit/new.html">⇒新卒応募ページはこちら</a></li> 
+					<li><a href="../recruit/tyuto.html">⇒中途応募ページはこちら</a></li> 
+					</ul> 
+					</div> 
+	
+				</div> 
+			</div> 
+	
+			<div id="footer" class="smallgraytext"> 
+				<a href="../index.html">HOME</a> | <a href="../outline/index.html">会社概要</a> | <a href="../policy/index.html">企業理念</a> | <a href="../product/index.html">開発実績</a> | <a href="../map/index.html">所在地(地図)</a> | <a href="../item/index.html">技術情報</a> 
+				| 株式会社 アイプランニング 
+				&copy; 1987 
+			</div> 
+		</div> 
+	<script type="text/javascript"> 
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write("\<script src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'>\<\/script>" );
+	</script> 
+	<script type="text/javascript"> 
+	var pageTracker = _gat._getTracker("UA-3244420-1");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+	</script> 
+	</div> 
+
+</body></html>

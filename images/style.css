@@ -1,0 +1,212 @@
+/* CSS Document */
+
+/*PAGE LAYOUT*/
+*{
+	margin:0;
+	padding:0;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: "ＭＳ Ｐゴシック","平成角ゴシック",sans-serif;
+	font-size: 0.8em;/*文字サイズ*/
+	line-height:140%;/*行間*/
+
+}
+#logo{float:left; background-image:url(tie_logo.gif); width:274px; height:213px;}
+#topheader{float:right; width:526px; height:97px; background-color:#F0F0F0; position:relative}
+#toplinks{position:absolute; right:10px; top:10px;}
+#menu{float:right; width:526px; height:32px; background-image:url(bg_menu.gif); background-repeat:repeat-x;}
+#submenu{float:right; width:526px; height:32px; background-image:url(bg_submenu.gif); background-position:top; background-repeat:repeat-x;}
+#contenttext{float:right; width:526px;}
+#leftpanel{float:left; width:274px;}
+#footer{float:left; width:800px; background-color:#F0F0F0; padding:10px;}
+
+
+/*GRAY PANEL*/
+.graypanel{
+	border:solid 1px #666666; background-color:#F7F7F7; padding:10px; margin:10px;
+}
+
+/*TEXT STYLES*/
+.bodytext {
+	color: #666666;
+	line-height:150%;/*行間*/
+}
+
+.subtext {
+	color: #666666;
+	line-height:120%;/*行間*/
+}
+
+.infotext {
+	color: #666666;
+	line-height:100%;/*行間*/
+}
+
+.titletext {
+	font: 0.8em Tahoma, sans-serif;
+	font-size:32px;
+	font-weight:bold;
+	color:#CC0000;
+	line-height:150%;/*行間*/
+}
+.whitetitle {
+	font-size:36px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.smalltitle {
+	font: 0.7em Tahoma, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#CC0000;
+}
+.smallwhitetext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+}
+.smallwhitetext a{
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration:none;
+}
+.smallwhitetext a:hover{
+	text-decoration:underline;
+}
+.smallgraytext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#999999;
+}
+.smallgraytext a{
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#999999;
+	text-decoration:none;
+}
+.smallgraytext a:hover{
+	text-decoration:underline;
+}
+.smallbluetext {
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#0000CC;
+}
+.smallbluetext a{
+	font: 0.7em Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color:#0000CC;
+	text-decoration:none;
+}
+.smallbluetext a:hover{
+	text-decoration:underline;
+}
+
+/*●トップ見出し＆ナビゲーション*/
+h1,#navi{
+	font-size: 12px;
+	color: #666666;
+	font-weight:bold;
+	padding: 0px;
+	margin: 0px;
+	line-height:100%;/*行間*/
+}
+
+h2 {
+	padding:0px 0px 0px 7px;
+	font-weight: bold;
+	font-size: 1.1em;
+	line-height: 2.0em;
+	color: #CC0000;
+	border-left: 5px solid #CC0000;
+	background: #FFFFFF;
+	clear: both;
+	text-align:left;
+}
+
+/*●見出し2*/
+h3 {
+	width: 225px;
+	background: url(bg_menu.gif);
+	padding: 4px 0px 0px 10px;
+	text-align:left;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	clear: both;
+}
+
+/*●アンダーライン*/
+.underline{
+	color: #000000;
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+/*●アンダーライン赤*/
+.underlineboldred{
+	color: #CC0000;
+	text-decoration:underline;
+	font-weight:bold;
+	font-size: 14px;
+}
+
+/*●取り消し線*/
+.not{ text-decoration:line-through;}
+
+
+/*●強調1*/
+.impact{
+	padding: 0px;
+	color: #000000;
+	background-color: #ffff66;
+	font-weight:bold;
+}
+
+/*●強調1アンダーライン*/
+.impactunderline{
+	color: #000000;
+	background-color: #ffff66;
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+
+/*左に画像、右に文章*/
+.left{
+	float: left;
+	margin: 0px 30px 20px 0px;
+}
+
+/*左に文章、右に画像*/
+.right{
+	float: right;
+	margin: 0px 0px 20px 30px;
+}
+
+/*●戻る＆進むリンク*/
+.link-back,.link-next{
+	padding: 3px;
+	margin: 30px 0px 30px 0px;
+	font-weight: bold;
+	font-size:10pt;
+	color: #333333;
+	background-color: #eeeeee;
+	border: 1px solid #000000;/*枠線の色*/
+	clear: both;
+}
+
+.link-back{ float: left;}
+.link-next{ float: right;}

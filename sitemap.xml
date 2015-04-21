@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://www.ipl.co.jp/</loc>
+  <lastmod>2012-10-19T11:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/index.html</loc>
+  <lastmod>2012-10-19T11:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/privacy/index.html</loc>
+  <lastmod>2007-12-18T06:40:55+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/sitemap.html</loc>
+  <lastmod>2007-12-18T06:40:38+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/contact/index.html</loc>
+  <lastmod>2007-12-18T06:40:40+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/outline/index.html</loc>
+  <lastmod>2007-12-18T06:40:51+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/policy/index.html</loc>
+  <lastmod>2007-12-18T06:40:52+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/product/index.html</loc>
+  <lastmod>2008-03-18T12:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/map/index.html</loc>
+  <lastmod>2012-10-05T10:40:50+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/index.html</loc>
+  <lastmod>2009-01-06T15:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/about/index.html</loc>
+  <lastmod>2007-12-18T06:40:38+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/recruit/new.html</loc>
+  <lastmod>2008-02-17T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/recruit/tyuto.html</loc>
+  <lastmod>2007-12-18T06:40:57+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/voice/index.html</loc>
+  <lastmod>2012-10-19T11:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/circle/index.html</loc>
+  <lastmod>2012-10-05T11:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/link/index.html</loc>
+  <lastmod>2007-12-18T06:40:49+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/recruit/index.html</loc>
+  <lastmod>2008-02-17T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/contact/</loc>
+  <lastmod>2007-12-18T06:40:40+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/map/GoogleMap.html</loc>
+  <lastmod>2007-12-14T06:43:49+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/JavaShootingGame.html</loc>
+  <lastmod>2007-12-18T06:40:45+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/GoogleMapOnWeb.html</loc>
+  <lastmod>2007-12-18T06:40:42+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/ThankyouMailAsp.html</loc>
+  <lastmod>2007-12-18T06:40:47+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/baseball/sfz_home.htm</loc>
+  <lastmod>2008-07-31T10:34:29+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/~badminton</loc>
+  <lastmod>2008-07-31T04:09:47+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/~bowl</loc>
+  <lastmod>2008-07-31T09:20:15+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/~golf/</loc>
+  <lastmod>2008-07-31T10:39:30+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/~mj/</loc>
+  <lastmod>2008-07-31T02:03:05+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www2.ipl.co.jp/official/~shogi/</loc>
+  <lastmod>2008-07-31T10:08:03+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/Subversion.html</loc>
+  <lastmod>2008-01-15T14:35:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/netfront.html</loc>
+  <lastmod>2008-03-04T16:45:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/JavaVista.html</loc>
+  <lastmod>2008-03-04T16:45:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/expertProgrammer.html</loc>
+  <lastmod>2008-04-03T14:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/python.html</loc>
+  <lastmod>2008-05-08T14:45:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/colinux.html</loc>
+  <lastmod>2008-06-24T13:45:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/javascriptdb.html</loc>
+  <lastmod>2008-10-17T13:45:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/tool.html</loc>
+  <lastmod>2009-01-06T15:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/wink.html</loc>
+  <lastmod>2009-04-01T15:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/curl.html</loc>
+  <lastmod>2009-06-11T13:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/curl2.html</loc>
+  <lastmod>2009-07-14T17:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/sql.html</loc>
+  <lastmod>2009-12-08T17:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/gaej01.html</loc>
+  <lastmod>2009-12-28T17:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/gaej02.html</loc>
+  <lastmod>2009-12-28T17:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>http://www.ipl.co.jp/item/gaej03.html</loc>
+  <lastmod>2009-12-28T17:30:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+
+</urlset>

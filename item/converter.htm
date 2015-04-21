@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="Shift_Jis"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<HEAD>
+
+	<meta name="author" content="Wink Hosting (www.winkhosting.com)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+	<meta name="keywords" content="アイプランニング" />
+	<meta name="description" content="%title% | 技術情報" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" href="../images/style.css" type="text/css" />
+	<title>テキストtoHTMLコンバータ（簡易版） | 技術情報</title>
+
+
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<script language="JavaScript" type="text/javascript" src="convert.js"></script>
+<script language="JavaScript">
+text="";
+function print(str){
+//  WScript.Echo(str);
+	document.getElementById("converted").innerHTML += str;
+	document.getElementById("source").value += str;
+}
+
+function doConvert(){
+	text = document.getElementById("rawtext").value;
+	document.getElementById("converted").innerHTML = "";
+	document.getElementById("source").value = "";
+	convert(text);
+}
+</script>
+</HEAD>
+<BODY>
+<h2>テキストtoHTMLコンバータ（簡易版）</h2>
+<p>JavaScriptをオンにしてください。<BR />IE6, Firefox2.0で動作確認をしています。</p>
+<FORM>
+<TEXTAREA ID="rawtext" style="width:400px; height:400px;">
+ここに変換したいテキストを入力します。
+
+■コンバータ
+＋概要
+内部はDIVとPタグで階層化されています。
+大見出しは"■"、小見出しは"＋"を行頭に書くことで h2 と h3 に変換されます。
+
+＋タグの挿入
+タグは<strong>そのまま</strong><i>テキスト中に</i>書けます。
+エスケープはされません。
+
+■テスト
+
+
+＋以下はテストです
+テスト
+テスト
+
+テスト
+テスト
+
+＋テスト２
+テスト
+テスト
+
+テスト
+テスト
+
+
+</TEXTAREA>
+<BR />
+<INPUT type="button" value="テキストからHTMLを生成" onClick="doConvert()" />
+</FORM>
+
+<DIV ID="converted" style="width:400px; border:1px solid; padding:10px;">変換後</DIV>
+<p>ソースコード</p>
+<TEXTAREA ID="source" style="width:400px; height:400px;">
+変換後ソース
+</TEXTAREA>
+
+</BODY>
+</HTML>

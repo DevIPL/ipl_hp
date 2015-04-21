@@ -1,0 +1,76 @@
+table {
+    font-size: 80%;
+    color: #666666;
+    margin-bottom: 30px;
+    border: 1px solid #CCCCCC;
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+
+th {
+    padding: 5px;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #E1E2E6;
+}
+
+td {
+    padding: 5px;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    background-color: #EFF2F3;
+    background: url("images/tdback.png");
+    background-repeat: repeat-x;
+}
+
+body {
+    background-color: #429FCA;
+    background-image: url("images/jstbtool_model.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+#searchBlock {
+    font-size: 0.8em;
+    border: 1px solid #000099;
+    padding: 10px;
+    width: 400px;
+    background: url("images/backgrad.png") #CADAE0;
+    background-repeat: repeat-x;
+}
+
+#usersqlarea{
+	border: 2px groove #999999;
+	width: 717px;
+}
+
+#usersql{
+	 width: 707px;
+	 margin: 3px;
+	 height: 150px;
+}
+
+.header{
+	font-weight: bold;
+	color: #444499;
+}
+
+.key{
+	font-weight: bold;
+}
+
+h1{
+    font-size: 1.2em;
+    color: #FFFFFF;
+}
+
+h2 {
+    padding: 0px 0px 0px 7px;
+    font-weight: bold;
+    font-size: 0.9em;
+    line-height: 2.0em;
+    color: #000000;
+    border-left: 5px solid #FFFFFF;
+    clear: both;
+    text-align: left;
+}
